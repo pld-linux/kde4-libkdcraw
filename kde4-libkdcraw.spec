@@ -72,6 +72,8 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so.?.?.?
+%dir %{_libdir}/libkdcraw1
+%attr(755,root,root) %{_libdir}/libkdcraw1/kdcraw
 %{_iconsdir}/hicolor/*x*/*/*.*
 
 %files devel
