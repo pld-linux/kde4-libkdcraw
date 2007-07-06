@@ -7,8 +7,8 @@ License:	LGPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/kipi/%{name}-%{version}.tar.bz2
 # Source0-md5:	46108744a7d8b0b9b0eaa9737c5e1fba
-URL:		http://extragear.kde.org/apps/kipi/
 Patch0:		kde-ac260-lt.patch
+URL:		http://extragear.kde.org/apps/kipi/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
@@ -35,18 +35,6 @@ Header files for libkdcraw development.
 
 %description devel -l pl.UTF-8
 Pliki nagłówkowe dla programistów używających libkdcraw.
-
-#%package static
-#Summary:	Static libkdcraw library
-#Summary(pl.UTF-8):	Biblioteka statyczna libkdcraw
-#Group:		Development/Libraries
-#Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
-
-#%description static
-#Static libkdcraw library.
-
-#%description static -l pl.UTF-8
-#Biblioteka statyczna libkdcraw.
 
 %prep
 %setup -q
@@ -80,9 +68,5 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
-%{_pkgconfigdir}/*.pc
 %{_includedir}/libkdcraw
-
-#%files static
-#%defattr(644,root,root,755)
-#%{_libdir}/lib*.a
+%{_pkgconfigdir}/*.pc
