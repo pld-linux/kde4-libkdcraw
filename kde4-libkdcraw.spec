@@ -1,12 +1,12 @@
 Summary:	KDcraw libary
 Summary(pl.UTF-8):	Biblioteka KDcraw
 Name:		libkdcraw
-Version:	0.1.1
-Release:	2
+Version:	0.1.2
+Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/kipi/%{name}-%{version}.tar.bz2
-# Source0-md5:	46108744a7d8b0b9b0eaa9737c5e1fba
+# Source0-md5:	38ed88e8b7387526113f150c349c8eb4
 Patch0:		kde-ac260-lt.patch
 URL:		http://extragear.kde.org/apps/kipi/
 BuildRequires:	autoconf
@@ -60,8 +60,8 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so.?.?.?
-%dir %{_libdir}/libkdcraw1
-%attr(755,root,root) %{_libdir}/libkdcraw1/kdcraw
+%dir %{_libdir}/libkdcraw2
+%attr(755,root,root) %{_libdir}/libkdcraw2/kdcraw
 %{_iconsdir}/hicolor/*x*/*/*.*
 
 %files devel
