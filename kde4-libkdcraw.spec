@@ -54,10 +54,12 @@ rm -rf $RPM_BUILD_ROOT
 	kde_htmldir=%{_kdedocdir} \
 	kde_libs_htmldir=%{_kdedocdir}
 
+%find_lang %{name} --all-name
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so.?.?.?
 %dir %{_libdir}/libkdcraw2
