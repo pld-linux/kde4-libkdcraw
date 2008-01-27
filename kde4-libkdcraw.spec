@@ -3,8 +3,8 @@ Summary(pl.UTF-8):	Biblioteka KDcraw
 Name:		libkdcraw
 Version:	0.1.3
 Release:	1
-License:	LGPL
-Group:		Libraries
+License:	GPL v2+
+Group:		X11/Libraries
 Source0:	http://dl.sourceforge.net/kipi/%{name}-%{version}.tar.bz2
 # Source0-md5:	dc4772804c17d7eff4f913048b8e1c3c
 Patch0:		kde-ac260-lt.patch
@@ -14,6 +14,7 @@ BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	kdelibs-devel >= 9:3.2.0
 BuildRequires:	lcms-devel
+BuildRequires:	libjpeg-devel
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -26,8 +27,8 @@ Biblioteka KDcraw jest częścią projektu KIPI.
 %package devel
 Summary:	Header files for libkdcraw development
 Summary(pl.UTF-8):	Pliki nagłówkowe dla programistów używających libkdcraw
-Group:		Development/Libraries
-Requires:	%{name} = %{epoch}:%{version}-%{release}
+Group:		X11/Development/Libraries
+Requires:	%{name} = %{version}-%{release}
 Requires:	kdelibs-devel >= 9:3.2.0
 
 %description devel
@@ -61,14 +62,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so.?.?.?
+%attr(755,root,root) %{_libdir}/libkdcraw.so.?.?.?
+%attr(755,root,root) %ghost %{_libdir}/libkdcraw.so.2
 %dir %{_libdir}/libkdcraw2
 %attr(755,root,root) %{_libdir}/libkdcraw2/kdcraw
 %{_iconsdir}/hicolor/*x*/*/*.*
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
+%attr(755,root,root) %{_libdir}/libkdcraw.so
+%{_libdir}/libkdcraw.la
 %{_includedir}/libkdcraw
-%{_pkgconfigdir}/*.pc
+%{_pkgconfigdir}/libkdcraw.pc
