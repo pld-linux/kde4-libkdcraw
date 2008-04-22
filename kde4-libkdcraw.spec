@@ -1,12 +1,12 @@
 Summary:	KDcraw libary
 Summary(pl.UTF-8):	Biblioteka KDcraw
 Name:		libkdcraw
-Version:	0.1.3
+Version:	0.1.4
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	http://dl.sourceforge.net/kipi/%{name}-%{version}.tar.bz2
-# Source0-md5:	dc4772804c17d7eff4f913048b8e1c3c
+# Source0-md5:	4fa5de407e9acf2eb5650d3fb5836f7d
 Patch0:		kde-ac260-lt.patch
 URL:		http://extragear.kde.org/apps/kipi/
 BuildRequires:	autoconf
@@ -63,9 +63,11 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libkdcraw.so.?.?.?
-%attr(755,root,root) %ghost %{_libdir}/libkdcraw.so.2
-%dir %{_libdir}/libkdcraw2
-%attr(755,root,root) %{_libdir}/libkdcraw2/kdcraw
+%attr(755,root,root) %ghost %{_libdir}/libkdcraw.so.?
+%dir %{_libdir}/libkdcraw?
+%attr(755,root,root) %{_libdir}/libkdcraw?/kdcraw
+# is this needed by the program itself? dunno
+%{_libdir}/libkdcraw?/CAMERALIST
 %{_iconsdir}/hicolor/*x*/*/*.*
 
 %files devel
