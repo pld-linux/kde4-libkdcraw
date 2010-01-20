@@ -5,10 +5,11 @@ Version:	0.1.4
 Release:	2
 License:	GPL v2+
 Group:		X11/Libraries
-Source0:	http://dl.sourceforge.net/kipi/%{name}-%{version}.tar.bz2
+Source0:	http://downloads.sourceforge.net/kipi/%{name}-%{version}.tar.bz2
 # Source0-md5:	4fa5de407e9acf2eb5650d3fb5836f7d
 Patch0:		kde-ac260-lt.patch
-URL:		http://extragear.kde.org/apps/kipi/
+Patch1:		kde-am.patch
+URL:		http://www.kipi-plugins.org/drupal/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
@@ -17,6 +18,9 @@ BuildRequires:	lcms-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+# build broken with spaces in CC
+%undefine	with_ccache
 
 %description
 The KDcraw Library is part of the KIPI Project.
@@ -40,6 +44,7 @@ Pliki nagłówkowe dla programistów używających libkdcraw.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 cp -f /usr/share/automake/config.sub admin
