@@ -1,26 +1,22 @@
+%define         _state          stable
+%define		orgname		libkdcraw
+%define         qtver           4.7.3
+
 Summary:	KDcraw libary
 Summary(pl.UTF-8):	Biblioteka KDcraw
 Name:		libkdcraw
-Version:	0.1.4
-Release:	2
+Version:	4.7.0
+Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
-Source0:	http://downloads.sourceforge.net/kipi/%{name}-%{version}.tar.bz2
-# Source0-md5:	4fa5de407e9acf2eb5650d3fb5836f7d
-Patch0:		kde-ac260-lt.patch
-Patch1:		kde-am.patch
-URL:		http://www.kipi-plugins.org/drupal/
-BuildRequires:	autoconf
-BuildRequires:	automake
-BuildRequires:	gettext-devel
-BuildRequires:	kdelibs-devel >= 9:3.2.0
+Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
+# Source0-md5:	8e5ea3fa1c714251e75dd227ad0d01b8
+URL:		http://www.kde.org/
 BuildRequires:	lcms-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	rpmbuild(macros) >= 1.164
+Obsoletes:	kde4-libkdcraw
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-# build broken with spaces in CC
-%undefine	with_ccache
 
 %description
 The KDcraw Library is part of the KIPI Project.
@@ -33,7 +29,7 @@ Summary:	Header files for libkdcraw development
 Summary(pl.UTF-8):	Pliki nagłówkowe dla programistów używających libkdcraw
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	kdelibs-devel >= 9:3.2.0
+Obsoletes:	kde4-libkdcraw-devel
 
 %description devel
 Header files for libkdcraw development.
@@ -43,41 +39,34 @@ Pliki nagłówkowe dla programistów używających libkdcraw.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
-cp -f /usr/share/automake/config.sub admin
-%{__make} -f admin/Makefile.common cvs
-%configure
+install -d build
+cd build
+%cmake \
+		-DGWENVIEW_SEMANTICINFO_BACKEND=Nepomuk \
+		../
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT \
-	kde_htmldir=%{_kdedocdir} \
-	kde_libs_htmldir=%{_kdedocdir}
-
-%find_lang %{name} --all-name
+%{__make} -C build/ install \
+        DESTDIR=$RPM_BUILD_ROOT \
+        kde_htmldir=%{_kdedocdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files -f %{name}.lang
+%files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libkdcraw.so.?.?.?
-%attr(755,root,root) %ghost %{_libdir}/libkdcraw.so.?
-%dir %{_libdir}/libkdcraw?
-%attr(755,root,root) %{_libdir}/libkdcraw?/kdcraw
-# is this needed by the program itself? dunno
-%{_libdir}/libkdcraw?/CAMERALIST
-%{_iconsdir}/hicolor/*x*/*/*.*
+%attr(755,root,root) %ghost %{_libdir}/libkdcraw.so.??
+%attr(755,root,root) %{_libdir}/libkdcraw.so.*.*.*
+%{_datadir}/apps/libkdcraw
+%{_iconsdir}/hicolor/*x*/apps/kdcraw.png
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libkdcraw.so
-%{_libdir}/libkdcraw.la
 %{_includedir}/libkdcraw
 %{_pkgconfigdir}/libkdcraw.pc
