@@ -1,16 +1,16 @@
 %define         _state          stable
 %define		orgname		libkdcraw
-%define         qtver           4.7.3
+%define         qtver           4.7.4
 
 Summary:	KDcraw libary
 Summary(pl.UTF-8):	Biblioteka KDcraw
 Name:		libkdcraw
-Version:	4.7.0
+Version:	4.7.1
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	8e5ea3fa1c714251e75dd227ad0d01b8
+# Source0-md5:	9501a948515d024a12f7ba6cf551bea2
 URL:		http://www.kde.org/
 BuildRequires:	lcms-devel
 BuildRequires:	libjpeg-devel
