@@ -6,7 +6,7 @@ Summary:	KDcraw libary
 Summary(pl.UTF-8):	Biblioteka KDcraw
 Name:		libkdcraw
 Version:	4.7.1
-Release:	2
+Release:	3
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
@@ -29,7 +29,7 @@ Summary:	Header files for libkdcraw development
 Summary(pl.UTF-8):	Pliki nagłówkowe dla programistów używających libkdcraw
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Obsoletes:	kde4-libkdcraw-devel
+Obsoletes:	kde4-libkdcraw-devel < 4.6.99
 
 %description devel
 Header files for libkdcraw development.
