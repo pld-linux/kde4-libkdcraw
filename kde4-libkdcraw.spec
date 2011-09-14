@@ -6,7 +6,7 @@ Summary:	KDcraw libary
 Summary(pl.UTF-8):	Biblioteka KDcraw
 Name:		libkdcraw
 Version:	4.7.1
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
@@ -15,7 +15,7 @@ URL:		http://www.kde.org/
 BuildRequires:	lcms-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	rpmbuild(macros) >= 1.164
-Obsoletes:	kde4-libkdcraw
+Obsoletes:	kde4-libkdcraw < 4.6.99
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -44,7 +44,6 @@ Pliki nagłówkowe dla programistów używających libkdcraw.
 install -d build
 cd build
 %cmake \
-		-DGWENVIEW_SEMANTICINFO_BACKEND=Nepomuk \
 		../
 %{__make}
 
@@ -57,6 +56,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
