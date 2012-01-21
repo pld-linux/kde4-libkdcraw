@@ -4,7 +4,7 @@
 
 Summary:	KDcraw libary
 Summary(pl.UTF-8):	Biblioteka KDcraw
-Name:		libkdcraw
+Name:		kde4-libkdcraw
 Version:	4.8.0
 Release:	1
 License:	GPL v2+
@@ -15,7 +15,7 @@ URL:		http://www.kde.org/
 BuildRequires:	lcms-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	rpmbuild(macros) >= 1.164
-Obsoletes:	kde4-libkdcraw < 4.6.99
+Obsoletes:	libkdcraw < 4.8.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -29,7 +29,7 @@ Summary:	Header files for libkdcraw development
 Summary(pl.UTF-8):	Pliki nagłówkowe dla programistów używających libkdcraw
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Obsoletes:	kde4-libkdcraw-devel < 4.6.99
+Obsoletes:	libkdcraw-devel < 4.8.0
 
 %description devel
 Header files for libkdcraw development.
@@ -38,7 +38,7 @@ Header files for libkdcraw development.
 Pliki nagłówkowe dla programistów używających libkdcraw.
 
 %prep
-%setup -q
+%setup -q -n %{orgname}-%{version}
 
 %build
 install -d build
