@@ -1,16 +1,16 @@
 %define         _state          stable
 %define		orgname		libkdcraw
-%define         qtver           4.8.0
+%define         qtver           4.8.1
 
 Summary:	KDcraw libary
 Summary(pl.UTF-8):	Biblioteka KDcraw
 Name:		kde4-libkdcraw
-Version:	4.8.2
+Version:	4.8.3
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.xz
-# Source0-md5:	8ba6ef179a0948e84cbf22af3f5a1bae
+# Source0-md5:	4428df0eb23ff4ed1510951a6ee538e2
 URL:		http://www.kde.org/
 BuildRequires:	lcms-devel
 BuildRequires:	libjpeg-devel
