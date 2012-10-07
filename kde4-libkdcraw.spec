@@ -5,12 +5,12 @@
 Summary:	KDcraw libary
 Summary(pl.UTF-8):	Biblioteka KDcraw
 Name:		kde4-libkdcraw
-Version:	4.9.1
+Version:	4.9.2
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.xz
-# Source0-md5:	5e4e4ef88f61a6a11863c7bdefae0945
+# Source0-md5:	78e880ba8ef6f8a84306b03b2346e9c7
 URL:		http://www.kde.org/
 BuildRequires:	lcms-devel
 BuildRequires:	libjpeg-devel
